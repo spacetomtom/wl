@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { searchArtworks } from '../services/api';
+import React from 'react';
+import { useSearchStore } from '../store/searchStore';
 import { SearchResults } from './SearchResults';
 import styles from './SearchComponent.module.css';
 
@@ -9,61 +8,45 @@ interface SearchComponentProps {
 }
 
 export const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [allResults, setAllResults] = useState<any[]>([]);
+  const {
+    searchTerm,
+    isLoading,
+    error,
+    setSearchTerm,
+    search,
+  } = useSearchStore();
 
-  const searchMutation = useMutation({
-    mutationFn: async ({ term, page }: { term: string; page: number }) => {
-      const response = await searchArtworks(term, page);
-      if (page === 1) {
-        setAllResults(response.artObjects);
-      } else {
-        setAllResults(prev => [...prev, ...response.artObjects]);
-      }
-      return response;
-    },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchTerm);
-    searchMutation.mutate({ term: searchTerm, page: 1 });
-  };
-
-  const handleLoadMore = () => {
-    const nextPage = currentPage + 1;
-    setCurrentPage(1);
-    onSearch(searchTerm);
-    searchMutation.mutate({ term: searchTerm, page: nextPage });
+    await search();
   };
 
   return (
     <div>
-        <form onSubmit={handleSubmit} className={styles.searchContainer}>
+      <form onSubmit={handleSubmit} className={styles.searchContainer}>
         <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Rechercher..."
-            className={styles.searchInput}
-            />
-        <button type="submit" className={styles.submitButton}>
-            {searchMutation.isPending ? 'Recherche...' : 'Rechercher'}
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Rechercher..."
+          className={styles.searchInput}
+        />
+        <button 
+          type="submit" 
+          className={styles.submitButton}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Recherche...' : 'Rechercher'}
         </button>
-        {searchMutation.isError && (
-            <div className={styles.error}>
+        {error && (
+          <div className={styles.error}>
             Une erreur est survenue lors de la recherche
-            </div>
+          </div>
         )}
-        </form>
-         <SearchResults 
-         results={allResults}
-         isLoading={searchMutation.isPending}
-         error={searchMutation.error as Error}
-         onLoadMore={handleLoadMore}
-         hasMore={searchMutation.data?.count > allResults.length}
-         />
+      </form>
+      
+      <SearchResults />
     </div>
   );
 };

@@ -1,24 +1,18 @@
 import React from 'react';
 import { ImageOff } from 'lucide-react';
-import { ArtworkResponse } from '../services/api';
+import { useSearchStore } from '../store/searchStore';
 import styles from './SearchResults.module.css';
 
-interface SearchResultsProps {
-  results: Array<ArtworkResponse['artObjects'][0]>;
-  isLoading: boolean;
-  error: Error | null;
-  onLoadMore: () => void;
-  hasMore: boolean;
-}
-
-export const SearchResults: React.FC<SearchResultsProps> = ({ 
-    results,
-    isLoading,
+export const SearchResults: React.FC = () => {
+  const { 
+    results, 
+    isLoading, 
     error,
-    onLoadMore,
-    hasMore
-}) => {
-  if (isLoading) {
+    totalCount,
+    loadMore
+  } = useSearchStore();
+
+  if (isLoading && !results?.length) {
     return <div>Chargement des résultats...</div>;
   }
 
@@ -29,6 +23,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   if (!results || results.length === 0) {
     return <div>Aucun résultat trouvé</div>;
   }
+
+  const hasMore = results.length < totalCount;
 
   return (
     <div>
@@ -57,7 +53,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       {hasMore && (
         <div className={styles.loadMoreContainer}>
           <button
-            onClick={onLoadMore}
+            onClick={loadMore}
             className={styles.loadMoreButton}
             disabled={isLoading}
           >
