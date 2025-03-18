@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rocket } from 'lucide-react';
+import { Palette } from 'lucide-react';
 import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
@@ -7,8 +7,8 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <a href="/" className={styles.logo}>
-          <Rocket size={24} />
-          <span>Mon App</span>
+          <Palette size={24} />
+          <span>Rijks Explorer</span>
         </a>
       </div>
     </header>

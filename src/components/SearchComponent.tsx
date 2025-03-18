@@ -3,11 +3,7 @@ import { useSearchStore } from '../store/searchStore';
 import { SearchResults } from './SearchResults';
 import styles from './SearchComponent.module.scss';
 
-interface SearchComponentProps {
-  onSearch: (searchTerm: string) => void;
-}
-
-export const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
+export const SearchComponent: React.FC = () => {
   const {
     searchTerm,
     isLoading,
@@ -18,7 +14,6 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) =>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(searchTerm);
     await search();
   };
 

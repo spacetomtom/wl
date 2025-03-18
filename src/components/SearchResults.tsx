@@ -50,7 +50,6 @@ export const SearchResults: React.FC = () => {
             </div>
             <div className={styles.info}>
               <h3 className={styles.title}>{artwork.title}</h3>
-              <p className={styles.artist}>{artwork.principalOrFirstMaker}</p>
             </div>
           </div>
         ))}
