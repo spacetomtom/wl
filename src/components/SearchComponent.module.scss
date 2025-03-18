@@ -1,7 +1,4 @@
-$primary-color: #3b82f6;
-$primary-hover: #2563eb;
-$error-color: #dc2626;
-$border-color: #e2e8f0;
+@import '../styles/variables';
 
 .searchContainer {
   display: flex;
