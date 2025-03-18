@@ -10,6 +10,7 @@ export interface ArtworkResponse {
     principalOrFirstMaker: string;
     webImage?: {
       url: string;
+      guid: string;
     };
   }>;
   count: number;

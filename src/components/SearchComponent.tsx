@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchStore } from '../store/searchStore';
 import { SearchResults } from './SearchResults';
-import styles from './SearchComponent.module.css';
+import styles from './SearchComponent.module.scss';
 
 interface SearchComponentProps {
   onSearch: (searchTerm: string) => void;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rocket } from 'lucide-react';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   return (

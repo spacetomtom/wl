@@ -8,6 +8,7 @@ interface SearchState {
   isLoading: boolean;
   error: Error | null;
   totalCount: number;
+  hasSearched: boolean;
   setSearchTerm: (term: string) => void;
   search: (term?: string) => Promise<void>;
   loadMore: () => Promise<void>;
@@ -21,6 +22,7 @@ export const useSearchStore = create<SearchState>((set, get) => ({
   isLoading: false,
   error: null,
   totalCount: 0,
+  hasSearched: false,
 
   setSearchTerm: (term) => set({ searchTerm: term }),
 
@@ -36,6 +38,7 @@ export const useSearchStore = create<SearchState>((set, get) => ({
         totalCount: response.count,
         currentPage: 1,
         error: null,
+        hasSearched: true,
       });
     } catch (error) {
       set({ error: error as Error });
@@ -71,5 +74,6 @@ export const useSearchStore = create<SearchState>((set, get) => ({
     isLoading: false,
     error: null,
     totalCount: 0,
+    hasSearched: false,
   }),
 }));

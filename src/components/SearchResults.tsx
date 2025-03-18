@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageOff } from 'lucide-react';
 import { useSearchStore } from '../store/searchStore';
-import styles from './SearchResults.module.css';
+import styles from './SearchResults.module.scss';
 
 export const SearchResults: React.FC = () => {
   const { 
@@ -9,7 +9,8 @@ export const SearchResults: React.FC = () => {
     isLoading, 
     error,
     totalCount,
-    loadMore
+    loadMore,
+    hasSearched
   } = useSearchStore();
 
   if (isLoading && !results?.length) {
@@ -18,6 +19,10 @@ export const SearchResults: React.FC = () => {
 
   if (error) {
     return <div>Erreur lors du chargement des résultats</div>;
+  }
+
+  if (!hasSearched) {
+    return null;
   }
 
   if (!results || results.length === 0) {
@@ -32,7 +37,7 @@ export const SearchResults: React.FC = () => {
         {results.map((artwork) => (
           <div key={artwork.id} className={styles.artworkCard}>
             <div className={styles.imageContainer}>
-              {artwork.webImage ? (
+              {artwork.webImage && artwork.webImage.guid ? (
                 <img
                   src={artwork.webImage.url}
                   alt={artwork.title}
