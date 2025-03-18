@@ -1,0 +1,92 @@
+.resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .artworkCard {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .artworkCard:hover {
+    transform: translateY(-4px);
+  }
+  
+  .imageContainer {
+    position: relative;
+    padding-bottom: 100%;
+    background-color: #f3f4f6;
+  }
+  
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .noImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #9ca3af;
+  }
+  
+  .info {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .artist {
+    font-size: 14px;
+    color: #6b7280;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+  }
+  
+  .loadMoreButton {
+    padding: 12px 24px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .loadMoreButton:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+  
+  .loadMoreButton:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+  }

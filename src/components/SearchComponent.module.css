@@ -28,6 +28,17 @@
     transition: background-color 0.2s;
   }
   
-  .submitButton:hover {
+  .submitButton:hover:not(:disabled) {
     background-color: #2563eb;
+  }
+  
+  .submitButton:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    color: #dc2626;
+    margin-top: 8px;
+    font-size: 14px;
   }
