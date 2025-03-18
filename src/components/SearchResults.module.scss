@@ -1,10 +1,4 @@
-$card-bg: white;
-$primary-color: #3b82f6;
-$primary-hover: #2563eb;
-$text-primary: #1f2937;
-$text-secondary: #6b7280;
-$placeholder-color: #9ca3af;
-$shadow-color: rgba(0, 0, 0, 0.1);
+@import '../styles/variables';
 
 .resultsGrid {
   display: grid;
