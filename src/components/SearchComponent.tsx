@@ -24,7 +24,7 @@ export const SearchComponent: React.FC = () => {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Rechercher..."
+          placeholder="Search..."
           className={styles.searchInput}
         />
         <button 
@@ -32,16 +32,17 @@ export const SearchComponent: React.FC = () => {
           className={styles.submitButton}
           disabled={isLoading}
         >
-          {isLoading ? 'Recherche...' : 'Rechercher'}
+          {isLoading ? 'Searching...' : 'Search'}
         </button>
-        {error && (
-          <div className={styles.error}>
-            Une erreur est survenue lors de la recherche
-          </div>
-        )}
       </form>
+      
+      {error && (
+        <div className={styles.error}>
+          An error occurred while searching
+        </div>
+      )}
       
       <SearchResults />
     </div>
   );
-};
+}

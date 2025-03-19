@@ -14,11 +14,11 @@ export const SearchResults: React.FC = () => {
   } = useSearchStore();
 
   if (isLoading && !results?.length) {
-    return <div>Chargement des résultats...</div>;
+    return <div>Loading results...</div>;
   }
 
   if (error) {
-    return <div>Erreur lors du chargement des résultats</div>;
+    return <div>Error loading results</div>;
   }
 
   if (!hasSearched) {
@@ -26,7 +26,7 @@ export const SearchResults: React.FC = () => {
   }
 
   if (!results || results.length === 0) {
-    return <div>Aucun résultat trouvé</div>;
+    return <div>No results found</div>;
   }
 
   const hasMore = results.length < totalCount;
@@ -61,7 +61,7 @@ export const SearchResults: React.FC = () => {
             className={styles.loadMoreButton}
             disabled={isLoading}
           >
-            {isLoading ? 'Chargement...' : 'Charger plus'}
+            {isLoading ? 'Loading...' : 'Load more'}
           </button>
         </div>
       )}
