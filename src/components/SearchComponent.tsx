@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSearchStore } from '../store/searchStore';
-import { SearchResults } from './SearchResults';
 import styles from './SearchComponent.module.scss';
 
 export const SearchComponent: React.FC = () => {
