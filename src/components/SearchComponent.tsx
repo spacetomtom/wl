@@ -41,8 +41,6 @@ export const SearchComponent: React.FC = () => {
           An error occurred while searching
         </div>
       )}
-      
-      <SearchResults />
     </div>
   );
 }

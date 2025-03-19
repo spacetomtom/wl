@@ -1,7 +1,7 @@
 import React from 'react';
-import { ImageOff } from 'lucide-react';
 import { useSearchStore } from '../store/searchStore';
 import styles from './SearchResults.module.scss';
+import { ArtworkCard } from './ArtworkCard';
 
 export const SearchResults: React.FC = () => {
   const { 
@@ -35,23 +35,7 @@ export const SearchResults: React.FC = () => {
     <div>
       <div className={styles.resultsGrid}>
         {results.map((artwork) => (
-          <div key={artwork.id} className={styles.artworkCard}>
-            <div className={styles.imageContainer}>
-              {artwork.webImage && artwork.webImage.guid ? (
-                <img
-                  src={artwork.webImage.url}
-                  alt={artwork.title}
-                  className={styles.image}
-                  loading="lazy"
-                />
-              ) : (
-                <ImageOff className={styles.noImage} size={32} />
-              )}
-            </div>
-            <div className={styles.info}>
-              <h3 className={styles.title}>{artwork.title}</h3>
-            </div>
-          </div>
+          <ArtworkCard key={artwork.id} artwork={artwork} />
         ))}
       </div>
       {hasMore && (
