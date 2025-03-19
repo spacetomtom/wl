@@ -95,6 +95,33 @@ src/
 └── styles/          # Global styles and variables
 ```
 
+## 📋 TODO
+
+### Internationalization (i18n)
+- [ ] Add i18n support using `react-i18next`
+- [ ] Create translation files for English and Dutch
+- [ ] Implement language switcher component
+- [ ] Add RTL support for future language additions
+
+### Unit Testing
+- [ ] Set up Vitest and React Testing Library
+- [ ] Add unit tests for components
+- [ ] Add unit tests for store and services
+- [ ] Set up test coverage reporting
+- [ ] Add GitHub Actions for automated testing
+
+### Guided Tour
+- [ ] Implement guided tour using `react-joyride`
+- [ ] Create tour steps for:
+  - [ ] Search functionality
+  - [ ] Artwork grid navigation
+  - [ ] Artwork details
+  - [ ] Language settings
+- [ ] Add skip and restart tour options
+- [ ] Make tour responsive for mobile devices
+
+
+
 ## 🤝 Contributing
 
 1. Fork the repository
