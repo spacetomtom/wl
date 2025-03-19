@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_KEY = 'SiESL82G'; // Note: In production, this should be in environment variables
-const BASE_URL = 'https://www.rijksmuseum.nl/api';
+const API_KEY = import.meta.env.VITE_RIJKSMUSEUM_API_KEY;
+const BASE_URL = import.meta.env.VITE_RIJKSMUSEUM_API_URL;
 
 export interface ArtworkResponse {
   artObjects: Array<{
